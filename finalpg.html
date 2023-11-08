@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Confirmation</title>
+  <style>
+    /* CSS styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    #order-details {
+      margin-bottom: 20px;
+    }
+
+    #interactive-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    #share-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    #share-button:hover {
+      background-color: #0056b3;
+    }
+
+    .delivery-bike {
+      position: relative;
+      width: 200px;
+      margin-top: 50px;
+      animation: bikeAnimation 5s linear infinite;
+    }
+
+    /* Keyframes for the delivery bike animation */
+    @keyframes bikeAnimation {
+      0% {
+        transform: translateX(-200px);
+      }
+      50% {
+        transform: translateX(calc(100% + 200px));
+      }
+      100% {
+        transform: translateX(-200px);
+      }
+    }
+
+    /* Additional CSS styles for the page */
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      top: -20px;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: confettiAnimation 3s ease-in-out infinite;
+    }
+
+    /* Keyframes for the confetti animation */
+    @keyframes confettiAnimation {
+      0% {
+        transform: translateY(0) rotate(0);
+      }
+      100% {
+        transform: translateY(800px) rotate(720deg);
+      }
+    }
+
+    .animation-wrapper {
+      position: relative;
+      perspective: 1000px;
+      margin-bottom: 50px;
+    }
+
+    .pickup-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateY(0);
+      transform-origin: center;
+      transition: transform 0.5s;
+    }
+
+    .pickup-animation img {
+      width: 150px;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .pickup-animation.active {
+      transform: translate(-50%, -50%) rotateY(180deg);
+    }
+
+    .pickup-animation.active img {
+      opacity: 1;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 20px;
+    }
+
+    .modal p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .modal button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Additional CSS for extra effects */
+
+    /* Glowing effect for share button */
+    #share-button {
+      position: relative;
+    }
+
+    #share-button:before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 10px;
+      background-color: rgba(0, 123, 255, 0.4);
+      z-index: -1;
+      animation: glowingAnimation 2s linear infinite;
+    }
+
+    @keyframes glowingAnimation {
+      0% {
+        box-shadow: 0 0 5px #007bff;
+      }
+      50% {
+        box-shadow: 0 0 20px #007bff;
+      }
+      100% {
+        box-shadow: 0 0 5px #007bff;
+      }
+    }
+
+    /* Parallax effect for delivery bike */
+    .delivery-bike {
+      transform-style: preserve-3d;
+    }
+
+    /* Add perspective to confetti animation */
+    .confetti-container {
+      perspective: 800px;
+    }
+
+    /* Skew effect for confetti */
+    .confetti {
+      transform: translateZ(-200px) rotateY(45deg);
+    }
+
+    /* Rotate effect for confetti */
+    @keyframes confettiAnimation {
+      0% {
+        transform: translateY(0) rotateY(0);
+      }
+      100% {
+        transform: translateY(800px) rotateY(1080deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Order Confirmation</h1>
+    <div id="order-details">
+      <!-- Display the customer's order details, such as product information, quantity, total price, etc. -->
+      <p>Product: Example Product</p>
+      <p>Quantity: 1</p>
+      <p>Total Price: $10.00</p>
+    </div>
+
+    <div id="interactive-section">
+      <div class="animation-wrapper">
+        <div class="pickup-animation">
+          <img src="bike-front.png" alt="Bike Front">
+          <img src="bike-back.png" alt="Bike Back">
+        </div>
+      </div>
+      <p>Thank you for your purchase!</p>
+      <button id="share-button">Share on Social Media</button>
+    </div>
+
+    <img class="delivery-bike" src="delivery-bike.png" alt="Delivery Bike">
+  </div>
+
+  <div class="confetti-container"></div>
+
+  <div class="overlay" id="modal-overlay">
+    <div class="modal">
+      <h2>Share on Social Media</h2>
+      <p>Spread the word about your purchase.</p>
+      <button id="modal-close-button">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for the page
+    const shareButton = document.getElementById('share-button');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalCloseButton = document.getElementById('modal-close-button');
+    const pickupAnimation = document.querySelector('.pickup-animation');
+
+    shareButton.addEventListener('click', () => {
+      modalOverlay.classList.add('active');
+      pickupAnimation.classList.add('active');
+      showConfetti();
+    });
+
+    modalCloseButton.addEventListener('click', () => {
+      modalOverlay.classList.remove('active');
+      pickupAnimation.classList.remove('active');
+      hideConfetti();
+    });
+
+    function showConfetti() {
+      const confettiContainer = document.querySelector('.confetti-container');
+      const numConfetti = 100;
+
+      for (let i = 0; i < numConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDelay = `${Math.random() * 3}s`;
+        confettiContainer.appendChild(confetti);
+      }
+    }
+
+    function hideConfetti() {
+      const confettiContainer = document.querySelector('.confetti-container');
+      confettiContainer.innerHTML = '';
+    }
+  </script>
+</body>
+</html>
