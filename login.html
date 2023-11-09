@@ -35,11 +35,15 @@
             margin-bottom: 5px;
         }
         .login-container input[type="text"],
-        .login-container input[type="password"] {
+        .login-container input[type="password"],
+        .login-container input[type="email"] {
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
+        }
+        .login-container input[type="checkbox"] {
+            margin-bottom: 10px;
         }
         .login-container button {
             background-color: #007BFF;
@@ -55,10 +59,14 @@
     <div class="login-container">
         <h2>Login</h2>
         <form action="" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember Me</label>
             <button type="submit">Log In</button>
         </form>
     </div>
