@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmation</title>
+  <title>Food Delivery Confirmation</title>
   <style>
-    /* CSS styles for the page */
+    /* Global Styles */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f7f7;
+      background-color: #f8f8f8;
     }
 
+    /* Header Styles */
+    header {
+      background-image: url('food-background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      border-bottom: 5px solid #e74c3c;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    /* Container Styles */
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 20px;
-      text-align: center;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -26,15 +46,31 @@
     }
 
     h1 {
-      color: #333;
+      color: #e74c3c;
       font-size: 28px;
       margin-top: 0;
     }
 
-    #order-details, #payment-details {
+    /* Order Details Styles */
+    #order-details, #payment-details, #food-summary {
       margin-bottom: 20px;
     }
 
+    #food-summary {
+      text-align: left;
+    }
+
+    #food-summary p {
+      margin: 5px 0;
+    }
+
+    .food-icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    /* Interactive Section Styles */
     #interactive-section {
       display: flex;
       flex-direction: column;
@@ -44,7 +80,7 @@
 
     #share-button {
       padding: 12px 24px;
-      background-color: #007bff;
+      background-color: #e74c3c;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -55,7 +91,7 @@
     }
 
     #share-button:hover {
-      background-color: #0056b3;
+      background-color: #c0392b;
     }
 
     .delivery-bike {
@@ -65,7 +101,6 @@
       animation: bikeAnimation 5s linear infinite;
     }
 
-    /* Keyframes for the delivery bike animation */
     @keyframes bikeAnimation {
       0% {
         transform: translateX(-200px);
@@ -78,7 +113,6 @@
       }
     }
 
-    /* Additional CSS styles for the page */
     .confetti-container {
       position: fixed;
       top: 0;
@@ -95,13 +129,12 @@
       top: -20px;
       width: 10px;
       height: 10px;
-      background-color: #f00;
+      background-color: #e74c3c;
       border-radius: 50%;
       pointer-events: none;
       animation: confettiAnimation 3s ease-in-out infinite;
     }
 
-    /* Keyframes for the confetti animation */
     @keyframes confettiAnimation {
       0% {
         transform: translateY(0) rotate(0);
@@ -171,7 +204,7 @@
 
     .modal h2 {
       margin-top: 0;
-      color: #333;
+      color: #e74c3c;
       font-size: 20px;
     }
 
@@ -182,7 +215,7 @@
 
     .modal button {
       padding: 12px 24px;
-      background-color: #007bff;
+      background-color: #e74c3c;
       color: #fff;
       border: none;
       border-radius: 5px;
@@ -192,57 +225,21 @@
     }
 
     .modal button:hover {
-      background-color: #0056b3;
+      background-color: #c0392b;
     }
 
-    /* Additional CSS for extra effects */
-
-    /* Glowing effect for share button */
-    #share-button {
-      position: relative;
-    }
-
-    #share-button:before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      right: -10px;
-      bottom: -10px;
-      border-radius: 10px;
-      background-color: rgba(0, 123, 255, 0.4);
-      z-index: -1;
-      animation: glowingAnimation 2s linear infinite;
-    }
-
-    @keyframes glowingAnimation {
-      0% {
-        box-shadow: 0 0 5px #007bff;
-      }
-      50% {
-        box-shadow: 0 0 20px #007bff;
-      }
-      100% {
-        box-shadow: 0 0 5px #007bff;
-      }
-    }
-
-    /* Parallax effect for delivery bike */
     .delivery-bike {
       transform-style: preserve-3d;
     }
 
-    /* Add perspective to confetti animation */
     .confetti-container {
       perspective: 800px;
     }
 
-    /* Skew effect for confetti */
     .confetti {
       transform: translateZ(-200px) rotateY(45deg);
     }
 
-    /* Rotate effect for confetti */
     @keyframes confettiAnimation {
       0% {
         transform: translateY(0) rotateY(0);
@@ -252,7 +249,6 @@
       }
     }
 
-    /* Additional animation for gears */
     .gear-animation {
       position: absolute;
       top: 50%;
@@ -276,17 +272,24 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Food Delight Delivery</h1>
+    <p>Your tasty journey begins here!</p>
+  </header>
+
   <div class="container">
     <h1>Order Confirmation</h1>
+
     <div id="order-details">
-      <!-- Display the customer's order details, such as product information, quantity, total price, etc. -->
-      <p>Product: Example Product</p>
-      <p>Quantity: 1</p>
-      <p>Total Price: $10.00</p>
+      <div id="food-summary">
+        <p>Food Summary:</p>
+        <p><img class="food-icon" src="burger-icon.png" alt="Burger"> Burger x2</p>
+        <p><img class="food-icon" src="pizza-icon.png" alt="Pizza"> Pizza Margherita x1</p>
+      </div>
+      <p>Total Price: $25.00</p>
     </div>
 
     <div id="payment-details">
-      <!-- Display payment information -->
       <p>Payment Method: Credit Card</p>
       <p>Transaction ID: ABC123XYZ</p>
     </div>
@@ -299,7 +302,7 @@
         </div>
         <div class="gear-animation"></div>
       </div>
-      <p>Thank you for your purchase!</p>
+      <p>Thank you for choosing Food Delight Delivery!</p>
       <button id="share-button">Share on Social Media</button>
     </div>
 
@@ -311,13 +314,12 @@
   <div class="overlay" id="modal-overlay">
     <div class="modal">
       <h2>Share on Social Media</h2>
-      <p>Spread the word about your purchase.</p>
+      <p>Spread the word about your delicious order.</p>
       <button id="modal-close-button">Close</button>
     </div>
   </div>
 
   <script>
-    // JavaScript code for the page
     const shareButton = document.getElementById('share-button');
     const modalOverlay = document.getElementById('modal-overlay');
     const modalCloseButton = document.getElementById('modal-close-button');
