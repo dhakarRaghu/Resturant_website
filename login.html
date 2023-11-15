@@ -21,7 +21,7 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 350px; /* Increased width for additional details */
         }
         .login-container h2 {
             text-align: center;
@@ -32,24 +32,27 @@
             flex-direction: column;
         }
         .login-container label {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .login-container input {
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Increased margin for better spacing */
             border: 1px solid #ccc;
             border-radius: 3px;
         }
         .login-container input[type="checkbox"] {
-            margin-bottom: 10px;
+            margin-bottom: 15px; /* Increased margin for better spacing */
         }
         .login-container button {
             background-color: #007BFF;
             color: #fff;
             border: none;
             border-radius: 3px;
-            padding: 10px;
+            padding: 12px; /* Increased padding for a larger button */
             cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #0056b3; /* Darker color on hover */
         }
     </style>
 </head>
@@ -58,14 +61,22 @@
         <h2>Login</h2>
         <form action="" method="post">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required aria-describedby="email-desc">
+            <input type="email" id="email" name="email" required aria-describedby="email-desc" placeholder="Enter your email">
 
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required aria-describedby="username-desc">
+            <input type="text" id="username" name="username" required aria-describedby="username-desc" placeholder="Enter your username">
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required aria-describedby="password-desc">
+            <input type="password" id="password" name="password" required aria-describedby="password-desc" placeholder="Enter your password">
             <!-- Add a password visibility toggle here if desired -->
+
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <!-- Add more options as needed -->
+            </select>
 
             <input type="checkbox" id="rememberMe" name="rememberMe">
             <label for="rememberMe">Remember Me</label>
@@ -75,4 +86,3 @@
     </div>
 </body>
 </html>
-
