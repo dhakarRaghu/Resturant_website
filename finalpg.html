@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Confirmation</title>
   <style>
     /* CSS styles for the page */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f7f7f7;
@@ -17,17 +19,18 @@
       padding: 20px;
       text-align: center;
       background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
     }
 
     h1 {
       color: #333;
-      font-size: 24px;
+      font-size: 28px;
       margin-top: 0;
     }
 
-    #order-details {
+    #order-details, #payment-details {
       margin-bottom: 20px;
     }
 
@@ -39,14 +42,15 @@
     }
 
     #share-button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       background-color: #007bff;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
 
     #share-button:hover {
@@ -176,7 +180,7 @@
     }
 
     .modal button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       background-color: #007bff;
       color: #fff;
       border: none;
@@ -246,6 +250,28 @@
         transform: translateY(800px) rotateY(1080deg);
       }
     }
+
+    /* Additional animation for gears */
+    .gear-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      border-radius: 50%;
+      animation: gearRotate 2s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes gearRotate {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -258,12 +284,19 @@
       <p>Total Price: $10.00</p>
     </div>
 
+    <div id="payment-details">
+      <!-- Display payment information -->
+      <p>Payment Method: Credit Card</p>
+      <p>Transaction ID: ABC123XYZ</p>
+    </div>
+
     <div id="interactive-section">
       <div class="animation-wrapper">
         <div class="pickup-animation">
           <img src="bike-front.png" alt="Bike Front">
           <img src="bike-back.png" alt="Bike Back">
         </div>
+        <div class="gear-animation"></div>
       </div>
       <p>Thank you for your purchase!</p>
       <button id="share-button">Share on Social Media</button>
