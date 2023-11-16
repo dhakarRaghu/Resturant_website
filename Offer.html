@@ -26,6 +26,11 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .offer-container:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     }
 
     .offer-image {
@@ -49,6 +54,23 @@
       color: #555;
       font-size: 16px;
       line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .offer-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .offer-info span {
+      display: flex;
+      align-items: center;
+    }
+
+    .icon-clock {
+      margin-right: 5px;
     }
 
     .cta-button {
@@ -90,11 +112,16 @@
     <img class="offer-image" src="special-offer.jpg" alt="Special Offer">
     <div class="offer-details">
       <h1>Delicious Special Offer</h1>
-      <p>Enjoy our special dish for a limited time! It's a culinary delight that will satisfy your taste buds. Hurry up and indulge in this amazing offer.</p>
+      <p>Indulge in our limited-time special dish that will satisfy your taste buds. Don't miss out on this culinary delight!</p>
+      <div class="offer-info">
+        <span><span class="icon-clock">🕒</span> Valid until December 31, 2023</span>
+        <span><span class="icon-clock">💲</span> $19.99</span>
+      </div>
       <a href="#" class="cta-button">Get it Now</a>
     </div>
   </div>
 
 </body>
 </html>
+
 
