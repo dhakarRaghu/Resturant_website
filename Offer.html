@@ -31,6 +31,8 @@
     .offer-image {
       width: 100%;
       height: auto;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
     }
 
     .offer-details {
@@ -50,8 +52,8 @@
     }
 
     .cta-button {
-      display: block;
-      margin: 20px auto;
+      display: inline-block;
+      margin-top: 20px;
       padding: 12px 24px;
       background-color: #e74c3c;
       color: #fff;
@@ -59,10 +61,23 @@
       border-radius: 4px;
       font-weight: bold;
       transition: background-color 0.3s ease;
+      cursor: pointer;
     }
 
     .cta-button:hover {
       background-color: #c0392b;
+    }
+
+    /* Additional Styling for Responsive Design */
+    @media only screen and (max-width: 600px) {
+      .offer-container {
+        border-radius: 0;
+      }
+
+      .offer-image {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
     }
   </style>
 </head>
@@ -82,3 +97,4 @@
 
 </body>
 </html>
+
