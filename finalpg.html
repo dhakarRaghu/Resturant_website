@@ -344,11 +344,17 @@
       const numConfetti = 100;
 
       for (let i = 0; i < numConfetti; i++) {
+        
         const confetti = document.createElement('div');
+        
         confetti.classList.add('confetti');
+        
         confetti.style.left = `${Math.random() * 100}%`;
+        
         confetti.style.animationDelay = `${Math.random() * 3}s`;
+        
         confettiContainer.appendChild(confetti);
+        
       }
     }
 
